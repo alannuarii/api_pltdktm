@@ -1,9 +1,8 @@
-from database.connection import conn, cur
+from database.connection import connection
 
 class Unit:
+
     def get_units(self):
-        cur.execute(f"SELECT * FROM apar")
-        result = cur.fetchall()
-        cur.close()
-        conn.close()
+        query = f"SELECT * FROM apar"
+        result = connection(query)
         return result
