@@ -1,4 +1,3 @@
-# from database.connection import conn, cur
 import mysql.connector
 import os
 from dotenv import load_dotenv
