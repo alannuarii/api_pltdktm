@@ -2,6 +2,7 @@ import os
 from app import app
 from flask import jsonify, request
 from app.controller.unit import Unit
+from app.controller.wp import WP
 
 @app.route('/<id>')
 def get_data(id):
@@ -14,11 +15,11 @@ def get_data(id):
 @app.route('/working-permit', methods=['GET','POST'])
 def working_permit():
     if request.method == 'POST':
-        # hirarc = request.files['hirarc']
+        # print(request.form)
+        # print(request.files['hirarc'].filename)
+        object_wp = WP()
+        object_wp.upload_wp()
 
-        # hirarc.save(os.path.join(app.config['FILE_HIRARC'], hirarc.filename))
-        print(request.form)
-    # print(request.files)
     response = {
         "message":"Data berhasil dikirim"
     }
