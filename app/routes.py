@@ -3,6 +3,7 @@ from app import app
 from flask import jsonify, request
 from app.controller.unit import Unit
 from app.controller.wp import WP
+from app.controller.jsa import JSA
 
 @app.route('/<id>')
 def get_data(id):
@@ -29,7 +30,9 @@ def working_permit():
 @app.route('/jsa', methods=['GET','POST'])
 def jsa():
     if request.method == 'POST':
-        print(request.form)
+        # print(request.form.getlist('tahap_pekerjaan'))
+        object_jsa = JSA()
+        object_jsa.upload_jsa()
 
     response = {
         'message':'Data berhasil dikirim'
