@@ -24,6 +24,11 @@ class WP:
         else:
             return ''
 
+    def get_wp(self):
+        query = f"SELECT * FROM wp"
+        result = connection(query, 'select')
+        return result
+
     def insert_wp(self, id_wp, tanggal_pengajuan, nama_pekerjaan, detail_pekerjaan, lokasi_pekerjaan, pengawas_pekerjaan, pengawas_k3, tanggal_mulai, tanggal_selesai, klasifikasi_pekerjaan, klasifikasi_lainnya, prosedur_pekerjaan, prosedur_lainnya, hirarc, jsa, prosedur_kerja, sertifikat):
         query = f"INSERT INTO wp (id_wp, tanggal_pengajuan, nama_pekerjaan, detail_pekerjaan, lokasi_pekerjaan, pengawas_pekerjaan, pengawas_k3, tanggal_mulai, tanggal_selesai, klasifikasi_pekerjaan, klasifikasi_lainnya, prosedur_pekerjaan, prosedur_lainnya, hirarc, jsa, prosedur_kerja, sertifikat) VALUES ({id_wp}, '{tanggal_pengajuan}', '{nama_pekerjaan}', '{detail_pekerjaan}', '{lokasi_pekerjaan}', '{pengawas_pekerjaan}', '{pengawas_k3}', '{tanggal_mulai}', '{tanggal_selesai}', '{klasifikasi_pekerjaan}', '{klasifikasi_lainnya}', '{prosedur_pekerjaan}', '{prosedur_lainnya}', '{hirarc}', '{jsa}', '{prosedur_kerja}', '{sertifikat}')"
         connection(query, 'insert')

@@ -15,15 +15,20 @@ def get_data(id):
 
 @app.route('/working-permit', methods=['GET','POST'])
 def working_permit():
-    if request.method == 'POST':
-        # print(request.form)
-        # print(request.files['hirarc'].filename)
-        object_wp = WP()
-        object_wp.upload_wp()
+    object_wp = WP()
 
-    response = {
-        "message":"Data berhasil dikirim"
-    }
+    if request.method == 'GET':
+        result = object_wp.get_wp()
+        response = {
+            "message":"Sukses",
+            "data": result
+        }
+
+    if request.method == 'POST':
+        object_wp.upload_wp()
+        response = {
+            "message": "Data berhasil dikirim"
+        }
 
     return jsonify(response), 200
 
@@ -39,3 +44,10 @@ def jsa():
     }
 
     return jsonify(response), 200
+
+@app.route('/test')
+def test():
+    object_wp = WP()
+    result = object_wp.get_wp()
+
+    return jsonify(result), 200
