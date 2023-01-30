@@ -2,6 +2,11 @@ from db import connection
 from flask import request
 
 class JSA:
+    def get_jsa_id(self, id):
+        query = f"SELECT * FROM jsa WHERE wp_id = {id} ORDER BY id_jsa"
+        result = connection(query, 'select')
+        return result
+
     def upload_jsa(self):
         tahap_pekerjaan = request.form.getlist('tahap_pekerjaan')
         potensi_risiko = request.form.getlist('potensi_risiko')

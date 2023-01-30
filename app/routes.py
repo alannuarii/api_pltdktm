@@ -1,14 +1,22 @@
-import os
 from app import app
 from flask import jsonify, request
 from app.controller.unit import Unit
 from app.controller.wp import WP
 from app.controller.jsa import JSA
+from app.controller.user import User
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    object_user = User()
+    if request.method == 'POST':
+        result = object_user.login()
+
+    return jsonify(result), 200
 
 @app.route('/<id>')
 def get_data(id):
-    object = Unit()
-    result = object.get_all_by_id(id)
+    object_unit = Unit()
+    result = object_unit.get_all_by_id(id)
 
     return jsonify(result), 200
 
@@ -32,6 +40,19 @@ def working_permit():
 
     return jsonify(response), 200
 
+
+@app.route('/working-permit/<id>')
+def wp_id(id):
+    object_wp = WP()
+    result = object_wp.get_wp_id(id)
+    response = {
+        "message":"Sukses",
+        "data": result
+    }
+
+    return jsonify(response), 200
+
+
 @app.route('/jsa', methods=['GET','POST'])
 def jsa():
     if request.method == 'POST':
@@ -45,9 +66,21 @@ def jsa():
 
     return jsonify(response), 200
 
+@app.route('/jsa/<id>')
+def jsa_id(id):
+    object_jsa = JSA()
+    result = object_jsa.get_jsa_id(id)
+    response = {
+        "message":"Sukses",
+        "data": result
+    }
+
+    return jsonify(response), 200
+
+
 @app.route('/test')
 def test():
-    object_wp = WP()
-    result = object_wp.get_wp()
+    object_user = User()
+    result = object_user.set_password('123456')
 
     return jsonify(result), 200
