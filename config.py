@@ -9,4 +9,5 @@ class Config(object):
     FILE_JSA = 'app/static/uploads/jsa'
     FILE_PROSEDUR = 'app/static/uploads/prosedur'
     FILE_SERTIFIKAT = 'app/static/uploads/sertifikat'
+    FOTO_PRESENSI = 'app/static/uploads/presensi'
     

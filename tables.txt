@@ -29,3 +29,12 @@ CREATE TABLE jsa
     wp_id INT NOT NULL,
     PRIMARY KEY (id_jsa),
 )
+
+CREATE TABLE presensi
+(
+    id_presensi INT NOT NULL AUTO_INCREMENT,
+    nama VARCHAR(30) NOT NULL,
+    waktu DATETIME NOT NULL,
+    foto VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_presensi)
+)

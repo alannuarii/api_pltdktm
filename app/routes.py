@@ -4,6 +4,7 @@ from app.controller.unit import Unit
 from app.controller.wp import WP
 from app.controller.jsa import JSA
 from app.controller.user import User
+from app.controller.presensi import Presensi
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -78,9 +79,27 @@ def jsa_id(id):
     return jsonify(response), 200
 
 
-@app.route('/test')
-def test():
-    object_user = User()
-    result = object_user.set_password('123456')
+@app.route('/presensi', methods=['GET','POST'])
+def presensi():
+    if request.method == 'POST':
+        object_presensi = Presensi()
+        object_presensi.upload_presensi()
 
-    return jsonify(result), 200
+    response = {
+        'message':'Data berhasil dikirim'
+    }
+
+    return jsonify(response), 200
+
+
+@app.route('/presensi/<tanggal>')
+def presensi_tanggal(tanggal):
+    object_presensi = Presensi()
+    result = object_presensi.get_presensi(tanggal)
+
+    response = {
+            "message":"Sukses",
+            "data": result
+        }
+    
+    return jsonify(response), 200
