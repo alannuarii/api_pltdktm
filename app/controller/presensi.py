@@ -21,7 +21,7 @@ class Presensi:
     def upload_photo(self, pic, waktu, nama):
         photo = utils.base64topng(pic)
         str_datetime = datetime.strptime(waktu, '%Y-%m-%d %H:%M:%S').strftime('%Y%m%d%H%M%S')
-        renamefile = f"{str_datetime}-{nama}.png"
+        renamefile = f"{str_datetime}-{nama.replace(' ', '')}.png"
         photo.save(os.path.join(app.config['FOTO_PRESENSI'], renamefile))
         return renamefile
 
