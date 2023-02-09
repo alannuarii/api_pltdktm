@@ -11,8 +11,9 @@ class Presensi:
         nama = request.form['nama']
         waktu = request.form['waktu']
         foto = request.form['foto']
-        nama_foto = self.upload_photo(foto, waktu, nama)
-        self.insert_presensi(nama, waktu, nama_foto)
+        if len(self.validation(nama, waktu)) == 0:
+            nama_foto = self.upload_photo(foto, waktu, nama)
+            self.insert_presensi(nama, waktu, nama_foto)
 
     def insert_presensi(self, nama, waktu, foto):
         query = f"INSERT INTO presensi (nama, waktu, foto) VALUES ('{nama}', '{waktu}', '{foto}')"
@@ -27,6 +28,14 @@ class Presensi:
 
     def get_presensi(self, tanggal):
         query = f"SELECT * FROM presensi WHERE DATE(waktu) = '{tanggal}' ORDER BY waktu"
+        result = connection(query, 'select')
+        return result
+
+    def validation(self, nama, tanggal):
+        slice_tanggal = tanggal[:10]
+        slice_jam = int(tanggal[11:13])
+        slice_menit = int(tanggal[14:16])
+        query = f"SELECT * FROM presensi WHERE nama = '{nama}' AND DATE(waktu) = '{slice_tanggal}' AND HOUR(waktu) = {slice_jam} AND MINUTE(waktu) = {slice_menit}"
         result = connection(query, 'select')
         return result
         

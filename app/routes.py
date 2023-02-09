@@ -103,3 +103,18 @@ def presensi_tanggal(tanggal):
         }
     
     return jsonify(response), 200
+
+
+@app.route('/test')
+def test():
+    object_presensi = Presensi()
+    result = object_presensi.validation('ARVI BRAYEN WOWILING', '2023-02-08 21:13:47')
+
+    print(len(result))
+
+    response = {
+            "message":"Sukses",
+            "data": result
+        }
+    
+    return jsonify(response), 200
