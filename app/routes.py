@@ -5,6 +5,7 @@ from app.controller.wp import WP
 from app.controller.jsa import JSA
 from app.controller.user import User
 from app.controller.presensi import Presensi
+from app.controller.lingkungan import Lingkungan
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -102,6 +103,19 @@ def presensi_tanggal(tanggal):
             "data": result
         }
     
+    return jsonify(response), 200
+
+
+@app.route('/lingkungan/lb3', methods=['GET','POST'])
+def lb3():
+    if request.method == 'POST':
+        object_lingkungan = Lingkungan()
+        object_lingkungan.upload_lb3()
+
+    response = {
+        'message':'Data berhasil dikirim'
+    }
+
     return jsonify(response), 200
 
 
