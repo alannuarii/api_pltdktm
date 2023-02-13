@@ -14,3 +14,8 @@ class Lingkungan:
     def insert_lb3(self, tanggal, jenis, status, jumlah):
         query = f"INSERT INTO lb3 (tanggal, jenis, status, jumlah) VALUES ('{tanggal}', '{jenis}', '{status}', {jumlah})"
         connection(query, 'insert')
+
+    def get_lb3(self, lb3):
+        query = f"SELECT * FROM lb3 WHERE jenis = '{lb3}' ORDER BY tanggal"
+        result = connection(query, 'select')
+        return result

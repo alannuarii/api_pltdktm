@@ -106,15 +106,22 @@ def presensi_tanggal(tanggal):
     return jsonify(response), 200
 
 
-@app.route('/lingkungan/lb3', methods=['GET','POST'])
-def lb3():
-    if request.method == 'POST':
-        object_lingkungan = Lingkungan()
-        object_lingkungan.upload_lb3()
+@app.route('/lingkungan/<lb3>', methods=['GET','POST'])
+def limbah_b3(lb3):
+    object_lingkungan = Lingkungan()
 
-    response = {
+    if request.method == 'GET':
+        result = object_lingkungan.get_lb3(lb3)
+        response = {
+            "message":"Sukses",
+            "data": result
+        }
+
+    if request.method == 'POST':
+        object_lingkungan.upload_lb3()
+        response = {
         'message':'Data berhasil dikirim'
-    }
+        }
 
     return jsonify(response), 200
 

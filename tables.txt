@@ -42,7 +42,7 @@ CREATE TABLE presensi
 CREATE TABLE lb3
 (
     id_lb3 INT NOT NULL AUTO_INCREMENT,
-    tanggal DATETIME NOT NULL,
+    tanggal DATE NOT NULL,
     jenis VARCHAR(15) NOT NULL,
     status VARCHAR(7) NOT NULL,
     jumlah FLOAT NOT NULL,
