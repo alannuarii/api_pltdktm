@@ -111,11 +111,18 @@ def limbah_b3(lb3):
     object_lingkungan = Lingkungan()
 
     if request.method == 'GET':
-        result = object_lingkungan.get_lb3(lb3)
-        response = {
+        if lb3 == 'all':
+            result = object_lingkungan.get_lb3_all()
+            response = {
             "message":"Sukses",
             "data": result
-        }
+            }
+        else:
+            result = object_lingkungan.get_lb3(lb3)
+            response = {
+            "message":"Sukses",
+            "data": result
+            }
 
     if request.method == 'POST':
         object_lingkungan.upload_lb3()
