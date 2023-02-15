@@ -15,7 +15,7 @@ def login():
 
     return jsonify(result), 200
 
-@app.route('/<id>')
+@app.route('/unit/<id>')
 def get_data(id):
     object_unit = Unit()
     result = object_unit.get_all_by_id(id)
