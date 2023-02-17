@@ -1,8 +1,9 @@
-from app import app
 from db import connection
 from flask import request
 
 class Lingkungan:
+
+    #LB3
     def upload_lb3(self):
         tanggal = request.form['tanggal']
         jenis = request.form['jenis']
@@ -24,3 +25,11 @@ class Lingkungan:
         query = f"SELECT * FROM lb3 WHERE jenis = '{lb3}' ORDER BY tanggal DESC"
         result = connection(query, 'select')
         return result
+    
+
+    # Air Limbah
+    def upload_limbah(self):
+        tanggal = request.form['tanggal']
+        jenis = request.form['jenis']
+        status = request.form['status']
+        jumlah = request.form['jumlah']
