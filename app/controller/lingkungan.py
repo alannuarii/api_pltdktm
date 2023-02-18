@@ -31,5 +31,11 @@ class Lingkungan:
     def upload_limbah(self):
         tanggal = request.form['tanggal']
         jenis = request.form['jenis']
-        status = request.form['status']
-        jumlah = request.form['jumlah']
+        parameter = request.form['parameter']
+        nilai = request.form['nilai']
+
+        self.insert_limbah(tanggal, jenis, parameter, nilai)
+
+    def insert_limbah(self, tanggal, jenis, parameter, nilai):
+        query = f"INSERT INTO limbah (tanggal, jenis, parameter, nilai) VALUES ('{tanggal}', '{jenis}', '{parameter}', {nilai})"
+        connection(query, 'insert')
