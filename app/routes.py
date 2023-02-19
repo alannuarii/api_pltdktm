@@ -133,7 +133,7 @@ def limbah_b3(lb3):
     return jsonify(response), 200
 
 
-@app.route('/lingkungan/limbah/<path>')
+@app.route('/lingkungan/limbah/<path>', methods=['GET','POST'])
 def limbah(path):
     object_lingkungan = Lingkungan()
 
