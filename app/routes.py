@@ -133,6 +133,26 @@ def limbah_b3(lb3):
     return jsonify(response), 200
 
 
+@app.route('/lingkungan/limbah/<path>')
+def limbah(path):
+    object_lingkungan = Lingkungan()
+
+    if request.method == 'GET':
+        result = object_lingkungan.get_limbah(path)
+        response = {
+            "message":"Sukses",
+            "data": result
+        }
+    
+    if request.method == 'POST':
+        object_lingkungan.upload_limbah()
+        response = {
+            'message':'Data berhasil dikirim'
+        }
+
+    return jsonify(response), 200
+
+
 @app.route('/test')
 def test():
     object_presensi = Presensi()

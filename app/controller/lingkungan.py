@@ -35,7 +35,15 @@ class Lingkungan:
         nilai = request.form['nilai']
 
         self.insert_limbah(tanggal, jenis, parameter, nilai)
+        # for i in range(27):
+        #     self.insert_limbah(f"2023-02-{i+1}", 'proses', 'debit', 0)
 
     def insert_limbah(self, tanggal, jenis, parameter, nilai):
         query = f"INSERT INTO limbah (tanggal, jenis, parameter, nilai) VALUES ('{tanggal}', '{jenis}', '{parameter}', {nilai})"
         connection(query, 'insert')
+
+    def get_limbah(self, path):
+        listPath = path.split('-')
+        query = f"SELECT * FROM limbah WHERE YEAR(tanggal) = '{listPath[2]}' AND MONTH(tanggal) = '{listPath[3]}' AND jenis = '{listPath[0]}' AND parameter = '{listPath[1]}'"
+        result = connection(query, 'select')
+        return result

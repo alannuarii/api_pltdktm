@@ -48,3 +48,13 @@ CREATE TABLE lb3
     jumlah FLOAT NOT NULL,
     PRIMARY KEY (id_lb3)
 )
+
+CREATE TABLE limbah
+(
+    id_limbah INT NOT NULL AUTO_INCREMENT,
+    tanggal DATE NOT NULL,
+    jenis VARCHAR(10) NOT NULL,
+    parameter VARCHAR(5) NOT NULL,
+    nilai FLOAT NOT NULL,
+    PRIMARY KEY (id_limbah)
+)
