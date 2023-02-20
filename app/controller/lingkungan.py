@@ -1,5 +1,6 @@
 from db import connection
 from flask import request
+from datetime import datetime
 
 class Lingkungan:
 
@@ -45,5 +46,12 @@ class Lingkungan:
     def get_limbah(self, path):
         listPath = path.split('-')
         query = f"SELECT * FROM limbah WHERE YEAR(tanggal) = '{listPath[2]}' AND MONTH(tanggal) = '{listPath[3]}' AND jenis = '{listPath[0]}' AND parameter = '{listPath[1]}'"
+        result = connection(query, 'select')
+        return result
+    
+    def get_debit_limbah(self):
+        now = datetime.now()
+        month = now.strftime('%m')
+        query = f"SELECT jenis, nilai FROM limbah WHERE MONTH(tanggal) = '{month}' AND parameter = 'debit'"
         result = connection(query, 'select')
         return result

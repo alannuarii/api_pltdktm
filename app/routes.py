@@ -153,6 +153,18 @@ def limbah(path):
     return jsonify(response), 200
 
 
+@app.route('/lingkungan/limbah/debit')
+def debit_limbah():
+    object_lingkungan = Lingkungan()
+    result = object_lingkungan.get_debit_limbah()
+    response = {
+            "message":"Sukses",
+            "data": result
+        }
+    
+    return jsonify(response), 200
+
+
 @app.route('/test')
 def test():
     object_presensi = Presensi()
