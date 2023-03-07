@@ -58,3 +58,14 @@ CREATE TABLE limbah
     nilai FLOAT NOT NULL,
     PRIMARY KEY (id_limbah)
 )
+
+CREATE TABLE guestbook
+(
+    id_guest INT NOT NULL AUTO_INCREMENT,
+    nama_lengkap VARCHAR(30) NOT NULL,
+    instansi VARCHAR(30) NOT NULL,
+    hp VARCHAR(15),
+    tujuan VARCHAR(100),
+    foto VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_guest)
+)

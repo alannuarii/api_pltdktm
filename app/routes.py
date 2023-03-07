@@ -6,6 +6,7 @@ from app.controller.jsa import JSA
 from app.controller.user import User
 from app.controller.presensi import Presensi
 from app.controller.lingkungan import Lingkungan
+from app.controller.guestbook import Guestbook
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -165,6 +166,19 @@ def debit_limbah():
     return jsonify(response), 200
 
 
+@app.route('/guestbook', methods=['GET','POST'])
+def guestbook():
+    object_guest = Guestbook()
+    if request.method == 'POST':
+        object_guest.upload_guest()
+        
+        response = {
+            'message':'Data berhasil dikirim'
+        }
+
+    return jsonify(response), 200
+
+
 @app.route('/test')
 def test():
     object_presensi = Presensi()
@@ -178,3 +192,5 @@ def test():
         }
     
     return jsonify(response), 200
+
+

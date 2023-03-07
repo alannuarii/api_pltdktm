@@ -10,4 +10,5 @@ class Config(object):
     FILE_PROSEDUR = 'app/static/uploads/prosedur'
     FILE_SERTIFIKAT = 'app/static/uploads/sertifikat'
     FOTO_PRESENSI = 'app/static/uploads/presensi'
+    FOTO_TAMU = 'app/static/uploads/tamu'
     
