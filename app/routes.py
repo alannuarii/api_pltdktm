@@ -170,10 +170,11 @@ def debit_limbah():
 def guestbook():
     object_guest = Guestbook()
     if request.method == 'POST':
-        object_guest.upload_guest()
+        result = object_guest.upload_guest()
         
         response = {
-            'message':'Data berhasil dikirim'
+            'message':'Data berhasil dikirim',
+            'data': result
         }
 
     return jsonify(response), 200

@@ -16,6 +16,8 @@ class Guestbook:
         nama_foto = self.upload_photo(foto, nama_lengkap)
         self.insert_guest(nama_lengkap, instansi, hp, tujuan, nama_foto)
 
+        return nama_lengkap
+
 
     def insert_guest(self, nama_lengkap, instansi, hp, tujuan, foto):
         query = f"INSERT INTO guestbook (nama_lengkap, instansi, hp, tujuan, foto) VALUES ('{nama_lengkap}','{instansi}','{hp}','{tujuan}','{foto}')"
